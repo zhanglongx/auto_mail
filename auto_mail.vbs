@@ -1,7 +1,8 @@
-' Version: 1.2
+' Version: 1.21
 
-Dim RECORD
-RECORD = "Record.txt"
+Const RECORD  = "Record.txt"
+Const MAIL_TO = "lixin@dvt.dvt.com"
+Const MAIL_CC = "xiyan@dvt.dvt.com"
 
 Dim iCount
 iCount = 0
@@ -38,7 +39,7 @@ If iResult = vbYes Then
 
     Dim delay
 
-    delay = Int(150 + Rnd * 60) * 1000
+    delay = Int(150 + Rnd * 120) * 1000
 
     WScript.Sleep delay
 
@@ -62,9 +63,8 @@ Sub Mail_Outlook(ByVal theSubject)
    Set OutMail = OutApp.CreateItem(0)
    
    With OutMail
-       .to = "lixin@dvt.dvt.com"
-       .CC = "xiyan@dvt.dvt.com"
-       .BCC = ""
+       .to = MAIL_TO
+       .CC = MAIL_CC
        .Subject = theSubject
        .Send
    End With
